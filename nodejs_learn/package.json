@@ -1,0 +1,9 @@
+{
+  "name": "nodejs_learn",
+  "version": "0.0.0",
+  "description": "nodejs_learn",
+  "main": "server.js",
+  "author": {
+    "name": "samar"
+  }
+}
