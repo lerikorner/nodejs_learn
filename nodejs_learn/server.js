@@ -1,8 +1,19 @@
-'use strict';
-var http = require('http');
-var port = process.env.PORT || 1337;
+var i = 0;
 
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World\n');
-}).listen(port);
+async function fast() {
+    i++;
+}
+
+async function slow() {
+    with (i) { }
+    i++;
+}
+
+var time = performance.now();
+while (i < 1000000) fast();
+alert("Ignoring with: " + (performance.now() - time));
+
+var time = performance.now();
+i = 0;
+while (i < 1000000) slow();
+alert("Processing with: " + (performance.now() - time));
